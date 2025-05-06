@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfolio d'Anas Harnoufi</title>
+  <style>
+    :root {
+      --primary: #4a90e2;
+      --background: #f5f7fa;
+      --text: #333;
+      --white: #fff;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--background);
+      color: var(--text);
+    }
+
+    header {
+      background-color: var(--white);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.5rem;
+      color: var(--primary);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav li {
+      border-radius: 8px;
+    }
+
+    nav a {
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      color: var(--text);
+      display: block;
+      transition: background-color 0.3s;
+      border-radius: 8px;
+    }
+
+    nav a:hover,
+    nav a.active {
+      background-color: var(--primary);
+      color: var(--white);
+    }
+
+    main {
+      padding: 2rem;
+    }
+
+    section {
+      display: none;
+      animation: fade 0.4s ease-in-out;
+    }
+
+    section.active {
+      display: block;
+    }
+
+    @keyframes fade {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: #777;
+      font-size: 0.9rem;
+    }
+
+    .accueil-container {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      background-color: white;
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      max-width: 900px;
+      margin: 2rem auto;
+    }
+
+    .profile-pic {
+      width: 160px;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 50%;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .profile-pic:hover {
+      transform: scale(1.05);
+    }
+
+    .accueil-texte h2 {
+      margin-top: 0;
+      font-size: 2rem;
+      color: var(--primary);
+    }
+
+    .btn-cv {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.75rem 1.5rem;
+      background-color: var(--primary);
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-cv:hover {
+      background-color: #357abd;
+    }
+
+    .contact-info {
+      margin-top: 4rem;
+      text-align: center;
+      background-color: #f9f9f9;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .contact-info h3 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+
+    .contact-info ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .contact-info li {
+      margin: 0.5rem 0;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .contact-info a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .contact-info a:hover {
+      text-decoration: underline;
+    }
+
+    #bts-sio h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      color: var(--primary);
+    }
+
+    .bts-section {
+      margin-bottom: 2rem;
+      background-color: #f9f9f9;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .bts-section h3 {
+      font-size: 1.5rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .bts-section p {
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .bts-section ul {
+      padding-left: 1.2rem;
+    }
+
+    .bts-section li {
+      margin-bottom: 0.8rem;
+    }
+    .experience-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.experience-card {
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.experience-card .date {
+  font-weight: bold;
+  color: #555;
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.experience-card h3 {
+  margin: 0.2rem 0 1rem;
+  color: var(--primary);
+}
+
+.experience-card ul {
+  padding-left: 1.2rem;
+  margin: 0;
+}
+
+.experience-card li {
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+.skills-icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.skill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90px;
+  text-align: center;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.skill img {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 0.5rem;
+  transition: transform 0.3s ease;
+}
+
+.skill img:hover {
+  transform: scale(1.1);
+}
+.skills-icons {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2rem;
+  justify-items: center;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  margin: 2rem auto;
+  max-width: 1000px;
+}
+
+.skill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: default;
+}
+
+.skill img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  margin-bottom: 0.5rem;
+  transition: transform 0.4s ease;
+}
+
+.skill span {
+  font-size: 1rem;
+  color: #333;
+  font-weight: 500;
+  text-align: center;
+}
+
+/* Animation au survol */
+.skill:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.skill:hover img {
+  transform: scale(1.1) rotate(3deg);
+}
+.competence-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: var(--primary);
+  font-family: 'Segoe UI', sans-serif;
+}
+.section-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: var(--primary);
+  font-family: 'Segoe UI', sans-serif;
+}
+.contact-form-container {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact-form label {
+  font-weight: bold;
+  color: var(--primary);
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.contact-form button {
+  background-color: var(--primary);
+  color: white;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover {
+  background-color: #357abd;
+}
+/* Section projets */
+#mes-projets {
+  padding: 50px 20px;
+  background-color: #f8f8f8;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 36px;
+  margin-bottom: 40px;
+  color: #357abd;
+}
+
+/* Conteneur des projets en grid */
+.project-container, .projets-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+/* Style commun aux cartes projets */
+.project-card, .projet {
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  overflow: hidden;
+  max-width: 350px;
+  padding: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover, .projet:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* Image des projets */
+.project-img, .projet-logo {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+/* Titre des projets */
+.project-card h3, .contenu-projet h3 {
+  font-size: 24px;
+  color: #222;
+  margin-bottom: 15px;
+}
+
+/* Description */
+.project-card p, .contenu-projet p {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/* Boutons / liens */
+.project-link, .btn-projet {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #00c37e;
+  color: #fff;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.project-link:hover, .btn-projet:hover {
+  background-color: #009e63;
+}
+.project-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+/* Section générale */
+#veille {
+  padding: 40px 20px;
+  background-color: #f9f9f9;
+  color: #333;
+  line-height: 1.6;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Titre principal de la section */
+#veille .section-title {
+  font-size: 2rem;
+  color: #357abd;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Sous-titres */
+#veille h3 {
+  font-size: 1.5rem;
+  color: #34495e;
+  margin-top: 30px;
+}
+
+#veille h4 {
+  font-size: 1.2rem;
+  margin-top: 20px;
+  color: #555;
+}
+
+/* Paragraphes */
+#veille p {
+  margin: 10px 0 20px;
+  max-width: 900px;
+}
+
+/* Liste des étapes et faits marquants */
+#veille ul {
+  list-style: disc inside;
+  margin: 10px 0 30px;
+  padding-left: 20px;
+}
+
+#veille li {
+  margin-bottom: 10px;
+}
+
+/* Images */
+#veille img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 20px auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  #veille {
+    padding: 20px 15px;
+  }
+
+  #veille .section-title {
+    font-size: 1.6rem;
+  }
+
+  #veille h3 {
+    font-size: 1.3rem;
+  }
+}
+
+
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="#accueil" style="color: black; text-decoration: none;">Anas Harnoufi</a></h1>
+
+    <nav>
+      <ul id="nav">
+        <li><a href="#accueil" data-tab="accueil">Accueil</a></li>
+        <li><a href="#bts-sio" data-tab="bts-sio">BTS SIO</a></li>
+        <li><a href="#mes-projets" data-tab="mes-projets">Mes projets</a></li>
+        <li><a href="#experience" data-tab="experience">Expérience</a></li>
+        <li><a href="#competence" data-tab="competence">Compétences</a></li>
+        <li><a href="#veille" data-tab="veille">Veille technologique</a></li>
+        <li><a href="#contact" data-tab="contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="accueil" class="active">
+      <div class="accueil-container">
+        <img src="images/photo_pro.png" alt="Photo de Harnoufi Anas" class="profile-pic" />
+        <div class="accueil-texte">
+          <h2>HARNOUFI Anas</h2>
+          <p>
+            Bonjour et bienvenue sur mon portfolio ! Je m'appelle Anas Harnoufi, étudiant en BTS SIO option SLAM, passionné par le développement web et les technologies modernes. Curieux, rigoureux et déterminé, je vous invite à découvrir mon parcours, mes projets et mes compétences.
+          </p>
+          <a href="docs/CV Anas Harnoufi.pdf" target="_blank" class="btn-cv">📄 Télécharger mon CV</a>
+
+          <div class="contact-info">
+            <h3>Contact</h3>
+            <ul>
+              <li><span>👤</span> Harnoufi Anas</li>
+              <li><span>🏠</span> Maisons-Alfort 94700</li>
+              <li><span>📞</span> 06 21 54 93 94</li>
+              <li><span>📧</span> <a href="mailto:anasharnoufi.94700@gmail.com">anasharnoufi.94700@gmail.com</a></li>
+              <li><span>🎂</span> 24/09/2005 (19 ans)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="bts-sio">
+      <h2>BTS SIO - Services Informatiques aux Organisations</h2>
+      <div class="bts-section">
+        <h3>1. Présentation du BTS</h3>
+        <p>
+          Le BTS SIO est un diplôme Bac+2 reconnu par l'État. Il forme des spécialistes capables de répondre aux besoins informatiques des entreprises : développement, maintenance, sécurité...
+        </p>
+        <p>
+          Il dure deux ans et alterne théorie, projets pratiques et stages en entreprise. Ce BTS permet de travailler rapidement ou de poursuivre ses études.
+        </p>
+      </div>
+      <div class="bts-section">
+        <h3>2. Les options</h3>
+        <ul>
+          <li><strong>SLAM</strong> (Solutions Logicielles et Applications Métiers) : Développement d'applications, création de sites, applis métiers.</li>
+          <li><strong>SISR</strong> (Solutions d'Infrastructure, Systèmes et Réseaux) : Administration réseau, serveurs, sécurité et maintenance.</li>
+        </ul>
+      </div>
+      <div class="bts-section">
+        <h3>3. Les examens finaux</h3>
+        <li>Support et mise à disposition de services informatiques - (E5) (oral)</li>
+        <li>Expression et communication en langue anglaise - partie écrite - Anglais</li>
+        <li>Culture générale et expression</li>
+        <li>Mathématiques pour l'informatique</li>
+        <li>Culture économique, juridique et managériale pour l'informatique</li>
+        <li>Cybersécurité des services informatiques</li>
+        <li>Expression et communication en langue anglaise - partie orale - Anglais</li>
+        <li>Conception et développement d'applications - (E6) (pratique)</li>
+
+      </div>
+    </section>
+
+    <section id="mes-projets">
+      <h2 class="section-title">Mes projets</h2>
+      
+      <div class="project-container">
+        <div class="project-card">
+          <img src="images/site-ecole-wordpress.png" alt="Aperçu site vitrine IRIS" class="project-img">
+          <h3>Site vitrine de l’école (WordPress)</h3>
+          <p>Création d’un site web vitrine avec WordPress présentant notre école, notre groupe, ainsi que les cours étudiés durant l’année. Projet collaboratif réalisé dans un cadre scolaire.</p>
+          <a href="https://iris-students-irszvt9zjv.live-website.com/" target="_blank" class="project-link">🔗 Voir le site</a>
+        </div>
+    
+        <div class="projet">
+          <div class="contenu-projet">
+            <img src="images/snake.png" alt="Jeu Snake" class="projet-logo">
+            <h3>Jeu Snake</h3>
+            <p>Développement d'un jeu Snake en C avec interaction utilisateur. Génération de pommes, système de sauvegarde/chargement et choix de vitesse de jeu.</p>
+            <a class="btn-projet" href="docs/jeu_snake.pdf" target="_blank" download>Voir le projet (PDF)</a>
+          </div>
+        </div>
+        <div class="projet">
+          <div class="contenu-projet">
+            <img src="images/shopify.png" alt="Logo Shopify" class="projet-logo">
+            <h3>Création d'une boutique en ligne Shopify</h3>
+            <p>Création d'une boutique en ligne via la plateforme Shopify. Intégration d'un système de paiement sécurisé grâce à PayPal.</p>
+            <a class="btn-projet" href="docs/trouve_plante.pdf" target="_blank" download>Voir le projet (PDF)</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section id="experience">
+      <h2 class="section-title">Expérience</h2>
+      <div class="experience-container">
+        <div class="experience-card">
+          <span class="date">Novembre - Décembre 2024</span>
+          <h3>Stagiaire Développeur Web — <em>MMI Horizon</em></h3>
+          <ul>
+            <li>Optimisation et personnalisation de sites web</li>
+            <li>Identification et analyse des besoins clients</li>
+            <li>Utilisation de Visual Studio Code (HTML, CSS et JAVA)</li>
+          </ul>
+        </div>
+      
+        <div class="experience-card">
+          <span class="date">Juillet 2024</span>
+          <h3>Stagiaire Développeur Web — <em>NAYU Analytics</em></h3>
+          <ul>
+            <li>Création, maintenance et modification de sites web</li>
+            <li>Gérer du code avec Git et Github</li>
+            <li>Analyse des problèmes techniques</li>
+            <li>Utilisation de Visual Studio Code (HTML, CSS et JAVA)</li>
+          </ul>
+        </div>
+      
+        <div class="experience-card">
+          <span class="date">Depuis 2021</span>
+          <h3>Arbitre de handball — <em>Ligue Île-de-France Handball</em></h3>
+          <ul>
+            <li>Officier de match pour les compétitions régionales et départementales</li>
+            <li>Assurer le bon déroulement des rencontres</li>
+          </ul>
+        </div>
+      
+        <div class="experience-card">
+          <span class="date">Décembre 2021</span>
+          <h3>Livraison de produits alimentaires — <em>Al Amana (Pays-Bas)</em></h3>
+          <ul>
+            <li>Inventaire et suivi des commandes</li>
+            <li>Récupération du stock chez le grossiste</li>
+            <li>Livraison de la marchandise aux clients</li>
+          </ul>
+        </div>
+      
+        <div class="experience-card">
+          <span class="date">Décembre 2019</span>
+          <h3>Stage d’observation — <em>Mairie de Joinville-le-Pont</em></h3>
+          <ul>
+            <li>Accueil du public</li>
+            <li>Enregistrement des emprunts et retours via la plateforme <strong>ELUDEO</strong></li>
+            <li>Organisation d’activités en ludothèque</li>
+          </ul>
+        </div>
+      </div>
+      </section>
+    <section id="competence">
+      <h2 class="competence-title">Compétences</h2>
+      <div class="skills-icons">
+        <div class="skill">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML" />
+          <span>HTML</span>
+        </div>
+        <div class="skill">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS" />
+          <span>CSS</span>
+        </div>
+        <div class="skill">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" />
+          <span>JavaScript</span>
+        </div>
+        <div class="skill">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React.js" />
+          <span>React.js</span>
+        </div>
+        <div class="skill">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" />
+          <span>Git</span>
+        </div>
+        <div class="skill">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" />
+          <span>GitHub</span>
+        </div>
+        <div class="skill">
+          <img src="https://img.icons8.com/color/48/000000/microsoft-word-2019.png" alt="Word" />
+          <span>Word</span>
+        </div>
+        <div class="skill">
+          <img src="https://img.icons8.com/color/48/000000/microsoft-excel-2019--v1.png" alt="Excel" />
+          <span>Excel</span>
+        </div>
+        <div class="skill">
+          <img src="https://img.icons8.com/color/48/000000/microsoft-powerpoint-2019.png" alt="PowerPoint" />
+          <span>PowerPoint</span>
+        </div>
+        <div class="skill">
+          <img src="https://lasalle-valenciennes.com/wp-content/uploads/2024/06/95622b616a0f315d192ab0eb7f61e861-l.jpg" alt="PIX" />
+          <span>Certification PIX</span>
+        </div>
+      </div>
+      </section>
+      <section id="veille">
+        <h2 class="section-title">Veille technologique</h2>
+      
+        <h3>Qu’est-ce que la veille technologique ?</h3>
+        <p>
+          La veille technologique, élément de la veille stratégique, consiste à surveiller les évolutions techniques et les innovations dans un secteur d’activité donné. Elle comprend notamment la surveillance, la collecte, le partage et la diffusion d’informations permettant d’anticiper ou de s’informer sur des changements en matière de recherche, de développement, de brevets, de lancement de nouveaux produits, de matériaux, de processus, de concepts, d’innovations de fabrication, etc. Cela a pour but d’évaluer l’impact de ces évolutions sur l’environnement et l’organisation.
+        </p>
+      
+        <h3>Mon sujet de veille technologique</h3>
+        <p>
+          L’intelligence artificielle dans la cybersécurité est un sujet passionnant et promet d’être au cœur des problématiques de demain. Ce thème allie mes intérêts pour les nouvelles technologies et la protection des données numériques, offrant ainsi une perspective unique sur les défis et les opportunités de notre ère numérique.
+        </p>
+      
+        <h3>Comment ai-je procédé ?</h3>
+        <ul>
+          <li>Utilisation de <strong>Feedly</strong> pour créer des flux d’informations à partir de mots-clés.</li>
+          <li>Utilisation de <strong>Google Alertes</strong> pour recevoir des e-mails quotidiens sur l’IA et la cybersécurité.</li>
+        </ul>
+        <img src="images/feedly.png" alt="Configuration de Feedly">
+        <img src="images/google_alertes.png" alt="Exemple de Google Alertes">
+      
+        <h3>À quoi cela ressemble-t-il ?</h3>
+        <p>Voici Feedly. Tous les articles parus dans la journée apparaissent ici. </p>
+        <img src="images/feedly2.png" alt="Articles dans Feedly">
+        <p>Feedly affiche l’intégralité ou un extrait de l’article. Un bouton “Visit website” permet d’accéder au site source.</p>
+      
+        <h4>Google Alertes</h4>
+        <img src="images/feedly3.png" alt="Résultats Google Alertes">
+        <p>Google Alertes montre les titres des articles. On peut les lire en entier ou les survoler selon leur pertinence.</p>
+        <img src="images/google_alertes3.png" alt="Articles de Google Alertes">
+        <h3>À retenir</h3>
+        <ul>
+          <li><strong>Février 2023 :</strong> Un utilisateur trompe le système de sécurité de sa banque grâce à une IA vocale gratuite.</li>
+          <li><strong>Juillet 2023 :</strong> WormGPT, un clone de ChatGPT, est utilisé pour créer des cyberattaques sophistiquées.</li>
+          <li><strong>Septembre 2023 :</strong> Darktrace lance Cyber AI Analyst, une technologie d’enquête automatisée sur les cybermenaces.</li>
+          <li><strong>Mai 2024 :</strong> Defendis : une IA innovante dédiée à la cybersécurité.</li>
+        </ul>
+      </section>
+      
+      
+      <section id="contact">
+        <h2 class="section-title">Contact</h2>
+        <div class="contact-form-container">
+          <form action="https://formspree.io/f/xqaqpwwq" method="POST" class="contact-form">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="box">
+            
+            <label for="name">Nom</label>
+            <input type="text" id="name" name="name" required>
+        
+            <label for="email">Adresse email</label>
+            <input type="email" id="email" name="email" required>
+        
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+        
+            <button type="submit">Envoyer</button>
+          </form>
+          <div id="confirmation-message" style="display: none; text-align: center; margin-top: 1.5rem; color: green; font-weight: bold;">
+            ✅ Merci pour votre message ! Je vous répondrai dès que possible.
+          </div>
+          
+        </div>
+        
+      </section>
+      
+  </main>
+
+  <footer>
+    &copy; 2025 - Portfolio d'Anas Harnoufi. Tous droits réservés.
+  </footer>
+
+  <script>
+    const navLinks = document.querySelectorAll('nav a');
+    const sections = document.querySelectorAll('section');
+
+    function activateTab(tabId) {
+      navLinks.forEach(link => link.classList.remove("active"));
+      sections.forEach(sec => sec.classList.remove("active"));
+
+      const currentLink = document.querySelector(`a[data-tab="${tabId}"]`);
+      const activeSection = document.getElementById(tabId);
+
+      if (currentLink && activeSection) {
+        currentLink.classList.add("active");
+        activeSection.classList.add("active");
+      }
+    }
+
+    function handleHashChange() {
+      const hash = window.location.hash.substring(1) || "accueil";
+      activateTab(hash);
+    }
+
+    navLinks.forEach(link => {
+      link.addEventListener("click", () => {
+        const tab = link.getAttribute("data-tab");
+        window.location.hash = tab;
+      });
+    });
+
+    window.addEventListener("DOMContentLoaded", handleHashChange);
+    window.addEventListener("hashchange", handleHashChange);
+  </script>
+ <script>
+  const form = document.querySelector('.contact-form');
+  const confirmation = document.getElementById('confirmation-message');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault(); // Empêche l'envoi immédiat
+    const formData = new FormData(form);
+
+    fetch(form.action, {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'Accept': 'application/json'
+      }
+    }).then(response => {
+      if (response.ok) {
+        form.reset();
+        confirmation.style.display = 'block';
+      } else {
+        confirmation.innerText = '❌ Une erreur est survenue. Veuillez réessayer.';
+        confirmation.style.color = 'red';
+        confirmation.style.display = 'block';
+      }
+    }).catch(() => {
+      confirmation.innerText = '❌ Une erreur réseau est survenue.';
+      confirmation.style.color = 'red';
+      confirmation.style.display = 'block';
+    });
+  });
+</script>
+<script>
+  const links = document.querySelectorAll("nav a");
+  const sections = document.querySelectorAll("main > section");
+
+  links.forEach(link => {
+    link.addEventListener("click", e => {
+      e.preventDefault();
+      const tab = link.getAttribute("data-tab");
+
+      // Active le lien
+      links.forEach(l => l.classList.remove("active"));
+      link.classList.add("active");
+
+      // Affiche la section correspondante
+      sections.forEach(section => {
+        section.classList.remove("active");
+        if (section.id === tab) {
+          section.classList.add("active");
+        }
+      });
+
+      // Scroll vers le haut
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+</script>
+
+</body>
+</html>
